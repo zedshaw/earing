@@ -34,7 +34,7 @@ void *Library_search(Module *state, Token *module, Token *name)
         // found it try to find the method
         char fname[MAX_LIB_NAME];
         if(Token_copy(name, fname, MAX_LIB_NAME, TK_IDENT) == -1) {
-            die(state, "Library file name %.*s is too long.", name->len, name->start);
+            die(state, ":- Library file name %.*s is too long.", name->len, name->start);
             return NULL;
         }
         void *ptr = dlsym(lib->handle, fname);
@@ -42,7 +42,7 @@ void *Library_search(Module *state, Token *module, Token *name)
         if(ptr) {
             return ptr;
         } else {
-            die(state, "module %.*s, error loading library '%.*s': %s.", 
+            die(state, ":- module %.*s, error loading library '%.*s': %s.", 
                     module->len, module->start, name->len, name->start, dlerror());
             return NULL;
         }
@@ -58,13 +58,13 @@ Library *Library_create(Module *state, Token *name)
     lib->len = name->len;
 
     if(Token_copy(name, lib->name, MAX_LIB_NAME, TK_STR) == -1) {
-        die(state, "Library name %.*s is too long.", name->len, name->start);
+        die(state, ":- Library name %.*s is too long.", name->len, name->start);
     }
 
     lib->handle = dlopen(lib->name, RTLD_NOW);
 
     if(!lib->handle) {
-        die(state, "failed opening library %s: %s", lib->name, dlerror());
+        die(state, ":- failed opening library %s: %s", lib->name, dlerror());
     }
 
     return lib;
@@ -85,7 +85,7 @@ void library_call(Module *state, array_t *params)
         // came out alright, so now set the name in our list as the second parameter
         lib->len = Token_copy(as, lib->name, MAX_LIB_NAME, TK_STR);
         if(lib->len == -1) {
-            die(state, "requested module name %.*s is too long, must be less than %d.",
+            die(state, ":- requested module name %.*s is too long, must be less than %d.",
                     as->len, as->start, MAX_LIB_NAME);
         }
 
@@ -127,7 +127,7 @@ void import(Module *state, array_t *params)
     }
 
     if(Token_copy(ARG(0), in_file, MAX_LIB_NAME, TK_STR) == -1) {
-        die(state, "requested module name %s is too long, must be less than %d.",
+        die(state, ":- requested module name %s is too long, must be less than %d.",
                 in_file, MAX_LIB_NAME);
     }
 
@@ -142,7 +142,7 @@ void import(Module *state, array_t *params)
     assert(state->imports && "Error importing into the parent namespace.");
 
     if(!Module_compile(target, input, length)) {
-        die(target, "error parsing imported module %s.", in_file);
+        die(target, ":- error parsing imported module %s.", in_file);
     }
 }
 
@@ -150,8 +150,8 @@ void import(Module *state, array_t *params)
 
 void Module_register_default_directives(Module *state)
 {
-    Module_register_directive(state, "code_size", strlen("code_size"), code_size, NULL); 
-    Module_register_directive(state, "import", strlen("import"), import, NULL); 
-    Module_register_directive(state, "leaf", strlen("leaf"), leaf, NULL); 
-    Module_register_directive(state, "library", strlen("library"), library_call, NULL);
+    Module_register_directive(state, ":- code_size", strlen("code_size"), code_size, NULL); 
+    Module_register_directive(state, ":- import", strlen("import"), import, NULL); 
+    Module_register_directive(state, ":- leaf", strlen("leaf"), leaf, NULL); 
+    Module_register_directive(state, ":- library", strlen("library"), library_call, NULL);
 }

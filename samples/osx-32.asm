@@ -7,7 +7,7 @@
 
 
 # these are part of this module, you can also have them in a function
-MY_NAME = "Zed A. Shaw"
+MY_NAME = "Zed A. Shaw, INTERNET ANGRY MAN"
 MY_AGE = 1200
 MY_INITIAL = 'A'
 
