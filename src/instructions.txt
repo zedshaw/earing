@@ -1,0 +1,88 @@
+addr     i  ui  l  ul  p  f  d  | O1 = O2 + O3
+addi     i  ui  l  ul  p        | O1 = O2 + O3
+addxr    i  ui               | O1 = O2 + (O3 + carry)
+addxi    i  ui               | O1 = O2 + (O3 + carry)
+addcr    i  ui               | O1 = O2 + O3, set carry
+addci    i  ui             | O1 = O2 + O3, set carry
+subr     i  ui  l  ul  p  f  d  | O1 = O2 - O3
+subi     i  ui  l  ul  p        | O1 = O2 - O3
+subxr    i  ui             | O1 = O2 - (O3 + carry)
+subxi    i  ui             | O1 = O2 - (O3 + carry)
+subcr    i  ui             | O1 = O2 - O3, set carry
+subci    i  ui             | O1 = O2 - O3, set carry
+rsbr     i  ui  l  ul  p  f  d  | O1 = O3 - O2
+rsbi     i  ui  l  ul  p        | O1 = O3 - O2
+mulr     i  ui  l  ul     f  d  | O1 = O2 * O3
+muli     i  ui  l  ul           | O1 = O2 * O3
+hmulr    i  ui             | O1 = high bits of O2 * O3
+hmuli    i  ui  l  ul           | O1 = high bits of O2 * O3
+divr     i  ui  l  ul     f  d  | O1 = O2 / O3
+divi     i  ui  l  ul           | O1 = O2 / O3
+modr     i  ui  l  ul           | O1 = O2 % O3
+modi     i  ui  l  ul           | O1 = O2 % O3
+andr     i  ui  l  ul           | O1 = O2 & O3
+andi     i  ui  l  ul           | O1 = O2 & O3
+orr      i  ui  l  ul           | O1 = O2 or O3
+ori      i  ui  l  ul           | O1 = O2 or O3
+xorr     i  ui  l  ul           | O1 = O2 ^ O3
+xori     i  ui  l  ul           | O1 = O2 ^ O3
+lshr     i  ui  l  ul           | O1 = O2 << O3
+lshi     i  ui  l  ul           | O1 = O2 << O3
+rshr     i  ui  l  ul           | O1 = O2 >> O31
+rshi     i  ui  l  ul           | O1 = O2 >> O32
+negr     i     l           | O1 = -O2
+notr     i  ui l  ul           | O1 = ~O2
+ltr      i  ui  l  ul  p  f  d  | O1 = (O2 <  O3)
+lti      i  ui  l  ul  p        | O1 = (O2 <  O3)
+ler      i  ui  l  ul  p  f  d  | O1 = (O2 <= O3)
+lei      i  ui  l  ul  p        | O1 = (O2 <= O3)
+gtr      i  ui  l  ul  p  f  d  | O1 = (O2 >  O3)
+gti      i  ui  l  ul  p        | O1 = (O2 >  O3)
+ger      i  ui  l  ul  p  f  d  | O1 = (O2 >= O3)
+gei      i  ui  l  ul  p        | O1 = (O2 >= O3)
+eqr      i  ui  l  ul  p  f  d  | O1 = (O2 == O3)
+eqi      i  ui  l  ul  p        | O1 = (O2 == O3)
+ner      i  ui  l  ul  p  f  d  | O1 = (O2 != O3)
+nei      i  ui  l  ul  p        | O1 = (O2 != O3)
+unltr                     f  d  | O1 = !(O2 >= O3)
+unler                     f  d  | O1 = !(O2 >  O3)
+ungtr                     f  d  | O1 = !(O2 <= O3)
+unger                     f  d  | O1 = !(O2 <  O3)
+uneqr                     f  d  | O1 = !(O2 <  O3) && !(o2 >  o3)
+ltgtr                     f  d  | O1 = !(O2 >= O3) or !(o2 <= o3)
+ordr                      f  d  | O1 =  (O2 == O2) &&  (o3 == o3)
+unordr                    f  d  | O1 =  (O2 != O2) or  (o3 != o3)
+movr                      i  ui  l  ul  p  f  d  | O1 = O2
+movi                      i  ui  l  ul  p  f  d  | O1 = O2
+hton       us ui          | Host-to-network (big endian) order O1 <- O2
+ntoh       us ui          | Network-to-host order O1 <- O2
+ldr     c  uc  s  us  i  ui  l  ul  p  f  d  | O1 = *O2
+ldi     c  uc  s  us  i  ui  l  ul  p  f  d  | O1 = *O2
+ldxr    c  uc  s  us  i  ui  l  ul  p  f  d  | O1 = *(O2+O3)
+ldxi    c  uc  s  us  i  ui  l  ul  p  f  d  | O1 = *(O2+O3)
+str     c  uc  s  us  i  ui  l  ul  p  f  d  | O1 = O2
+sti     c  uc  s  us  i  ui  l  ul  p  f  d  | O1 = O2
+stxr    c  uc  s  us  i  ui  l  ul  p  f  d  | (O1+O2) = O3
+stxi    c  uc  s  us  i  ui  l  ul  p  f  d  | (O1+O2) = O3
+prepare                   i                f  d | O1 args to call
+pusharg     c  uc  s  us  i  ui  l  ul  p  f  d | push argument O1 on
+getarg      c  uc  s  us  i  ui  l  ul  p  f  d | O1 <- arg variable O2
+blti      i  ui  l  ul  p        | if (O2 <  O3) goto O1
+blei      i  ui  l  ul  p        | if (O2 <= O3) goto O1
+bgti      i  ui  l  ul  p        | if (O2 >  O3) goto O1
+bgei      i  ui  l  ul  p        | if (O2 >= O3) goto O1
+beqi      i  ui  l  ul  p        | if (O2 == O3) goto O1
+bnei      i  ui  l  ul  p        | if (O2 != O3) goto O1
+bmsr      i ui l  ul             | if O2 &  O3 goto O1
+bmsi      i ui l  ul             | if O2 &  O3 goto O1
+bmcr      i ui l  ul             | if !(O2 & O3) goto O1
+bmci      i ui l  ul             | if !(O2 & O3) goto O14
+calli                       | function call to O1
+callr                       | function call to a register O1
+finish                      | function call to O1
+finishr                     | function call to a register O1
+jmpi                   | unconditional jump to O1
+jmpr                   | unconditional jump to O1
+ret                         | return from subroutine
+retval    c  uc s  us i  ui l  ul p  f  d  | move return value O1
+

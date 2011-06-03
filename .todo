@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="medium" time="1212154864" done="1212209970">
+        Implement calling defined functions.
+    </note>
+    <note priority="medium" time="1212154879">
+        Implement jmp instruction and the special move patching needed.
+    </note>
+    <note priority="medium" time="1212154915" done="1212256741">
+        Bring over some TST code for the named storage of functions/labels/etc.
+    </note>
+    <note priority="medium" time="1212154930" done="1213172460">
+        Setup constant/static data storage primitives for modules.
+    </note>
+    <note priority="medium" time="1212154950" done="1212538795">
+        Create the ability to import other modules into a namespace system of some kind.
+    </note>
+    <note priority="medium" time="1212154963" done="1213172466">
+        Write a little REPL interpreter using gnu readline.
+        <comment>
+            todo -d 13
+        </comment>
+    </note>
+    <note priority="medium" time="1212155057" done="1212538804">
+        Develop a simple compiled file format that is saved similar to Python's
+        <comment>
+            totally didn't fucking work.
+        </comment>
+    </note>
+    <note priority="medium" time="1212155090" done="1212306690">
+        Create the directives system for registering new directives.
+    </note>
+    <note priority="medium" time="1212155109" done="1212377463">
+        Implement a directive for loading shared libs and getting functions from them.
+    </note>
+    <note priority="medium" time="1212210006" done="1212212608">
+        Need to have forward declarations so that we can have recursive functions.
+    </note>
+    <note priority="medium" time="1212343492" done="1212377466">
+        String and char tokens should strip off the enclosing dquot/squot chars.
+    </note>
+    <note priority="medium" time="1212538840">
+        Create a package format that can hold a bunch of modules with all the things java got wrong.
+    </note>
+    <note priority="medium" time="1212538848" done="1213172491">
+        Add namespace stuff to the imports.
+    </note>
+    <note priority="medium" time="1212543950" done="1213172478">
+        Gonna need to create a free list that referenced strings all go into, as part of the constants management stuff.
+        <comment>
+            todo
+        </comment>
+    </note>
+    <note priority="medium" time="1213172510" done="1213180393">
+        Restructure the data.c into it's meaningful parts
+    </note>
+    <note priority="medium" time="1213172523" done="1213183853">
+        Put the code gen stuff into a separate .c to speed compiling.
+    </note>
+    <note priority="medium" time="1213172545" done="1213183839">
+        Add productions to the grammar for leaf functions.
+    </note>
+    <note priority="medium" time="1213172561" done="1213183842">
+        Have leaf functions blow up if you try a call.
+    </note>
+    <note priority="medium" time="1213172697" done="1213197062">
+        Copy over the defend.h and reuse it here.
+        <comment>
+            not needed
+        </comment>
+    </note>
+    <note priority="medium" time="1213172769" done="1213183858">
+        Double check for right recursion in the grammar.
+    </note>
+    <note priority="medium" time="1213172790" done="1213197036">
+        Implement a function call syntax, which will allow for dereferencing functions.
+        <comment>
+            not needed
+        </comment>
+    </note>
+    <note priority="medium" time="1213172851" done="1213197049">
+        Work on the REPL more to make readline work better and to allow function calls.
+    </note>
+    <note priority="medium" time="1213177062" done="1213180790">
+        add begin/end markers to function struct
+    </note>
+</todo>

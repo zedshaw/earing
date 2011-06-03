@@ -1,0 +1,631 @@
+State 0:
+          module ::= * statements
+          statements ::= * statement
+          statements ::= * statements statement
+          statement ::= * directive EOL
+          statement ::= * constant EOL
+          statement ::= * function EOL
+          statement ::= * EOL
+          constant ::= * IDENT EQ expr
+          directive ::= * PERCENT IDENT parameters
+          function ::= * FUNCTION function_decl block END
+          statements ::= * statements error statement
+
+                           EOL shift  47
+                         IDENT shift  21
+                       PERCENT shift  27
+                      FUNCTION shift  11
+                      function shift  20
+                        module accept
+                    statements shift  1
+                     statement shift  54
+                     directive shift  18
+                      constant shift  19
+
+State 1:
+      (0) module ::= statements *
+          statements ::= statements * statement
+          statement ::= * directive EOL
+          statement ::= * constant EOL
+          statement ::= * function EOL
+          statement ::= * EOL
+          constant ::= * IDENT EQ expr
+          directive ::= * PERCENT IDENT parameters
+          function ::= * FUNCTION function_decl block END
+          statements ::= statements * error statement
+
+                             $ reduce 0
+                           EOL shift  47
+                         IDENT shift  21
+                       PERCENT shift  27
+                      FUNCTION shift  11
+                         error shift  3
+                      function shift  20
+                     statement shift  59
+                     directive shift  18
+                      constant shift  19
+
+State 2:
+          operation ::= * OP DOT TYPE parameters
+          operation ::= * OP parameters
+          directive ::= * PERCENT IDENT parameters
+          function ::= FUNCTION function_decl * block END
+          block ::= * element EOL
+          block ::= * block element EOL
+          element ::= * operation
+          element ::= * directive
+          element ::= * LABEL
+          element ::= * IDENT EQ expr
+     (40) element ::= *
+
+                         IDENT shift  30
+                            OP shift  9
+                         LABEL shift  53
+                       PERCENT shift  27
+                     directive shift  52
+                     operation shift  51
+                         block shift  5
+                       element shift  31
+                     {default} reduce 40
+
+State 3:
+          statement ::= * directive EOL
+          statement ::= * constant EOL
+          statement ::= * function EOL
+          statement ::= * EOL
+          constant ::= * IDENT EQ expr
+          directive ::= * PERCENT IDENT parameters
+          function ::= * FUNCTION function_decl block END
+          statements ::= statements error * statement
+
+                           EOL shift  47
+                         IDENT shift  21
+                       PERCENT shift  27
+                      FUNCTION shift  11
+                      function shift  20
+                     statement shift  43
+                     directive shift  18
+                      constant shift  19
+
+State 4:
+          parameters ::= LPAREN * args RPAREN
+          args ::= * args COMMA expr
+          args ::= * expr
+     (12) args ::= *
+          expr ::= * HEX
+          expr ::= * FLOAT
+          expr ::= * INT
+          expr ::= * STR
+          expr ::= * CHR
+          expr ::= * REG
+          expr ::= * IDENT
+          expr ::= * function_reference
+          expr ::= * function_reference DOT IDENT
+          expr ::= * LABEL
+          expr ::= * LBRACK INT RBRACK
+          expr ::= * LBRACK IDENT RBRACK
+          function_reference ::= * IDENT DOT IDENT
+
+                         IDENT shift  17
+                           HEX shift  42
+                         FLOAT shift  41
+                           INT shift  74
+                           STR shift  71
+                           CHR shift  69
+                           REG shift  68
+                         LABEL shift  60
+                        LBRACK shift  14
+                          args shift  15
+            function_reference shift  23
+                          expr shift  73
+                     {default} reduce 12
+
+State 5:
+          operation ::= * OP DOT TYPE parameters
+          operation ::= * OP parameters
+          directive ::= * PERCENT IDENT parameters
+          function ::= FUNCTION function_decl block * END
+          block ::= block * element EOL
+          element ::= * operation
+          element ::= * directive
+          element ::= * LABEL
+          element ::= * IDENT EQ expr
+     (40) element ::= *
+
+                         IDENT shift  30
+                            OP shift  9
+                         LABEL shift  53
+                       PERCENT shift  27
+                           END shift  48
+                     directive shift  52
+                     operation shift  51
+                       element shift  29
+                     {default} reduce 40
+
+State 6:
+          args ::= args COMMA * expr
+          expr ::= * HEX
+          expr ::= * FLOAT
+          expr ::= * INT
+          expr ::= * STR
+          expr ::= * CHR
+          expr ::= * REG
+          expr ::= * IDENT
+          expr ::= * function_reference
+          expr ::= * function_reference DOT IDENT
+          expr ::= * LABEL
+          expr ::= * LBRACK INT RBRACK
+          expr ::= * LBRACK IDENT RBRACK
+          function_reference ::= * IDENT DOT IDENT
+
+                         IDENT shift  17
+                           HEX shift  42
+                         FLOAT shift  41
+                           INT shift  74
+                           STR shift  71
+                           CHR shift  69
+                           REG shift  68
+                         LABEL shift  60
+                        LBRACK shift  14
+            function_reference shift  23
+                          expr shift  72
+
+State 7:
+          expr ::= * HEX
+          expr ::= * FLOAT
+          expr ::= * INT
+          expr ::= * STR
+          expr ::= * CHR
+          expr ::= * REG
+          expr ::= * IDENT
+          expr ::= * function_reference
+          expr ::= * function_reference DOT IDENT
+          expr ::= * LABEL
+          expr ::= * LBRACK INT RBRACK
+          expr ::= * LBRACK IDENT RBRACK
+          function_reference ::= * IDENT DOT IDENT
+          element ::= IDENT EQ * expr
+
+                         IDENT shift  17
+                           HEX shift  42
+                         FLOAT shift  41
+                           INT shift  74
+                           STR shift  71
+                           CHR shift  69
+                           REG shift  68
+                         LABEL shift  60
+                        LBRACK shift  14
+            function_reference shift  23
+                          expr shift  56
+
+State 8:
+          constant ::= IDENT EQ * expr
+          expr ::= * HEX
+          expr ::= * FLOAT
+          expr ::= * INT
+          expr ::= * STR
+          expr ::= * CHR
+          expr ::= * REG
+          expr ::= * IDENT
+          expr ::= * function_reference
+          expr ::= * function_reference DOT IDENT
+          expr ::= * LABEL
+          expr ::= * LBRACK INT RBRACK
+          expr ::= * LBRACK IDENT RBRACK
+          function_reference ::= * IDENT DOT IDENT
+
+                         IDENT shift  17
+                           HEX shift  42
+                         FLOAT shift  41
+                           INT shift  74
+                           STR shift  71
+                           CHR shift  69
+                           REG shift  68
+                         LABEL shift  60
+                        LBRACK shift  14
+            function_reference shift  23
+                          expr shift  44
+
+State 9:
+          parameters ::= * LPAREN args RPAREN
+      (9) parameters ::= *
+          operation ::= OP * DOT TYPE parameters
+          operation ::= OP * parameters
+
+                        LPAREN shift  4
+                           DOT shift  28
+                    parameters shift  46
+                     {default} reduce 9
+
+State 10:
+          function_decl ::= IDENT LPAREN * function_params RPAREN COLON TYPE
+          function_params ::= * IDENT COLON TYPE
+          function_params ::= * function_params COMMA IDENT COLON TYPE
+     (33) function_params ::= *
+
+                         IDENT shift  38
+               function_params shift  16
+                     {default} reduce 33
+
+State 11:
+          function ::= FUNCTION * function_decl block END
+          function_decl ::= * IDENT LPAREN function_params RPAREN COLON TYPE
+
+                         IDENT shift  32
+                 function_decl shift  2
+
+State 12:
+          parameters ::= * LPAREN args RPAREN
+      (9) parameters ::= *
+          directive ::= PERCENT IDENT * parameters
+
+                        LPAREN shift  4
+                    parameters shift  40
+                     {default} reduce 9
+
+State 13:
+          parameters ::= * LPAREN args RPAREN
+      (9) parameters ::= *
+          operation ::= OP DOT TYPE * parameters
+
+                        LPAREN shift  4
+                    parameters shift  45
+                     {default} reduce 9
+
+State 14:
+          expr ::= LBRACK * INT RBRACK
+          expr ::= LBRACK * IDENT RBRACK
+
+                         IDENT shift  26
+                           INT shift  25
+
+State 15:
+          parameters ::= LPAREN args * RPAREN
+          args ::= args * COMMA expr
+
+                        RPAREN shift  70
+                         COMMA shift  6
+
+State 16:
+          function_decl ::= IDENT LPAREN function_params * RPAREN COLON TYPE
+          function_params ::= function_params * COMMA IDENT COLON TYPE
+
+                        RPAREN shift  33
+                         COMMA shift  35
+
+State 17:
+     (21) expr ::= IDENT *
+          function_reference ::= IDENT * DOT IDENT
+
+                           DOT shift  22
+                     {default} reduce 21
+
+State 18:
+          statement ::= directive * EOL
+
+                           EOL shift  64
+
+State 19:
+          statement ::= constant * EOL
+
+                           EOL shift  62
+
+State 20:
+          statement ::= function * EOL
+
+                           EOL shift  55
+
+State 21:
+          constant ::= IDENT * EQ expr
+
+                            EQ shift  8
+
+State 22:
+          function_reference ::= IDENT DOT * IDENT
+
+                         IDENT shift  67
+
+State 23:
+     (22) expr ::= function_reference *
+          expr ::= function_reference * DOT IDENT
+
+                           DOT shift  24
+                     {default} reduce 22
+
+State 24:
+          expr ::= function_reference DOT * IDENT
+
+                         IDENT shift  61
+
+State 25:
+          expr ::= LBRACK INT * RBRACK
+
+                        RBRACK shift  63
+
+State 26:
+          expr ::= LBRACK IDENT * RBRACK
+
+                        RBRACK shift  65
+
+State 27:
+          directive ::= PERCENT * IDENT parameters
+
+                         IDENT shift  12
+
+State 28:
+          operation ::= OP DOT * TYPE parameters
+
+                          TYPE shift  13
+
+State 29:
+          block ::= block element * EOL
+
+                           EOL shift  50
+
+State 30:
+          element ::= IDENT * EQ expr
+
+                            EQ shift  7
+
+State 31:
+          block ::= element * EOL
+
+                           EOL shift  58
+
+State 32:
+          function_decl ::= IDENT * LPAREN function_params RPAREN COLON TYPE
+
+                        LPAREN shift  10
+
+State 33:
+          function_decl ::= IDENT LPAREN function_params RPAREN * COLON TYPE
+
+                         COLON shift  34
+
+State 34:
+          function_decl ::= IDENT LPAREN function_params RPAREN COLON * TYPE
+
+                          TYPE shift  49
+
+State 35:
+          function_params ::= function_params COMMA * IDENT COLON TYPE
+
+                         IDENT shift  36
+
+State 36:
+          function_params ::= function_params COMMA IDENT * COLON TYPE
+
+                         COLON shift  37
+
+State 37:
+          function_params ::= function_params COMMA IDENT COLON * TYPE
+
+                          TYPE shift  66
+
+State 38:
+          function_params ::= IDENT * COLON TYPE
+
+                         COLON shift  39
+
+State 39:
+          function_params ::= IDENT COLON * TYPE
+
+                          TYPE shift  57
+
+State 40:
+     (28) directive ::= PERCENT IDENT parameters *
+
+                     {default} reduce 28
+
+State 41:
+     (16) expr ::= FLOAT *
+
+                     {default} reduce 16
+
+State 42:
+     (15) expr ::= HEX *
+
+                     {default} reduce 15
+
+State 43:
+     (41) statements ::= statements error statement *
+
+                     {default} reduce 41
+
+State 44:
+      (7) constant ::= IDENT EQ expr *
+
+                     {default} reduce 7
+
+State 45:
+     (13) operation ::= OP DOT TYPE parameters *
+
+                     {default} reduce 13
+
+State 46:
+     (14) operation ::= OP parameters *
+
+                     {default} reduce 14
+
+State 47:
+      (6) statement ::= EOL *
+
+                     {default} reduce 6
+
+State 48:
+     (29) function ::= FUNCTION function_decl block END *
+
+                     {default} reduce 29
+
+State 49:
+     (30) function_decl ::= IDENT LPAREN function_params RPAREN COLON TYPE *
+
+                     {default} reduce 30
+
+State 50:
+     (35) block ::= block element EOL *
+
+                     {default} reduce 35
+
+State 51:
+     (36) element ::= operation *
+
+                     {default} reduce 36
+
+State 52:
+     (37) element ::= directive *
+
+                     {default} reduce 37
+
+State 53:
+     (38) element ::= LABEL *
+
+                     {default} reduce 38
+
+State 54:
+      (1) statements ::= statement *
+
+                     {default} reduce 1
+
+State 55:
+      (5) statement ::= function EOL *
+
+                     {default} reduce 5
+
+State 56:
+     (39) element ::= IDENT EQ expr *
+
+                     {default} reduce 39
+
+State 57:
+     (31) function_params ::= IDENT COLON TYPE *
+
+                     {default} reduce 31
+
+State 58:
+     (34) block ::= element EOL *
+
+                     {default} reduce 34
+
+State 59:
+      (2) statements ::= statements statement *
+
+                     {default} reduce 2
+
+State 60:
+     (24) expr ::= LABEL *
+
+                     {default} reduce 24
+
+State 61:
+     (23) expr ::= function_reference DOT IDENT *
+
+                     {default} reduce 23
+
+State 62:
+      (4) statement ::= constant EOL *
+
+                     {default} reduce 4
+
+State 63:
+     (25) expr ::= LBRACK INT RBRACK *
+
+                     {default} reduce 25
+
+State 64:
+      (3) statement ::= directive EOL *
+
+                     {default} reduce 3
+
+State 65:
+     (26) expr ::= LBRACK IDENT RBRACK *
+
+                     {default} reduce 26
+
+State 66:
+     (32) function_params ::= function_params COMMA IDENT COLON TYPE *
+
+                     {default} reduce 32
+
+State 67:
+     (27) function_reference ::= IDENT DOT IDENT *
+
+                     {default} reduce 27
+
+State 68:
+     (20) expr ::= REG *
+
+                     {default} reduce 20
+
+State 69:
+     (19) expr ::= CHR *
+
+                     {default} reduce 19
+
+State 70:
+      (8) parameters ::= LPAREN args RPAREN *
+
+                     {default} reduce 8
+
+State 71:
+     (18) expr ::= STR *
+
+                     {default} reduce 18
+
+State 72:
+     (10) args ::= args COMMA expr *
+
+                     {default} reduce 10
+
+State 73:
+     (11) args ::= expr *
+
+                     {default} reduce 11
+
+State 74:
+     (17) expr ::= INT *
+
+                     {default} reduce 17
+
+----------------------------------------------------
+Symbols:
+    0: $:
+    1: EOL
+    2: IDENT
+    3: EQ
+    4: LPAREN
+    5: RPAREN
+    6: COMMA
+    7: OP
+    8: DOT
+    9: TYPE
+   10: HEX
+   11: FLOAT
+   12: INT
+   13: STR
+   14: CHR
+   15: REG
+   16: LABEL
+   17: LBRACK
+   18: RBRACK
+   19: PERCENT
+   20: FUNCTION
+   21: END
+   22: COLON
+   23: error:
+   24: parameters: <lambda> LPAREN
+   25: args: <lambda> IDENT COMMA HEX FLOAT INT STR CHR REG LABEL LBRACK
+   26: function: FUNCTION
+   27: function_decl: IDENT
+   28: function_params: <lambda> IDENT COMMA
+   29: label:
+   30: function_reference: IDENT
+   31: module: EOL IDENT PERCENT FUNCTION
+   32: statements: EOL IDENT PERCENT FUNCTION
+   33: statement: EOL IDENT PERCENT FUNCTION
+   34: directive: PERCENT
+   35: constant: IDENT
+   36: expr: IDENT HEX FLOAT INT STR CHR REG LABEL LBRACK
+   37: operation: OP
+   38: block: EOL IDENT OP LABEL PERCENT
+   39: element: <lambda> IDENT OP LABEL PERCENT
