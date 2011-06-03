@@ -1,16 +1,14 @@
 EaRing: It All Started As A Joke
+================================
 
 *NOTICE:* This is only on github as a kind of historical record.  It hasn't been touched since about 2008 and so probably would need some serious updating to be useful.  It will probably not build without some work on your part, and I don't have time.
 
 WELCOME
+=======
 
 This is a small project I tinkered on in my spare time as a joke for the
-RubyEnRails 2008 conference.  You can read all about the joke at:
-
-  http://zedshaw.com/conferences/rubyenrails2008/
-
-Which includes the presentation I gave.  It was a riot, but the project actually
-became fun to just work on in its own right.
+RubyEnRails 2008 conference.  It was a riot, but the project actually became
+fun to just work on in its own right.
 
 You'll find many similarities between EaRing and LLVM, except EaRing has fewer
 features, is kind of weird, run on fewer platforms, and is tiny by comparison.
@@ -19,6 +17,7 @@ I wouldn't recommend using it in anything serious right now, but it is fun to
 check it out and see how it was built.
 
 WHAT IS IT?
+===========
 
 EaRing is a dynamic assembler, think of it as a scripting language that uses a
 generic CPU-neutral assembly language as the script.  It actually does compile
@@ -43,6 +42,7 @@ future.
 
 
 FEATURES
+========
 
 * Simple API with good examples. Look at earing.c
 * Embeddable into your programs (there are no global variables).
@@ -60,6 +60,7 @@ FEATURES
 
 
 PLATFORMS
+=========
 
 Since this is an initial release, I only really got it to work on a few
 platforms, but it should run on others:
@@ -69,35 +70,42 @@ platforms, but it should run on others:
 
 
 LICENSE
+=======
 
-Right now I don't have a license on it since I've got no idea if anyone will use
-it.  Just consider it free to use for educational purposes, and contact me if
-you have any ideas about the license.
+Copyright (c) 2008, Zed A. Shaw
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+must display the following acknowledgement:
+This product includes software developed by the <organization>.
+4. Neither the name of the <organization> nor the
+names of its contributors may be used to endorse or promote products
+derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY ZED A. SHAW ''AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 INSTALLATION
+============
 
-Quick instructions for trying out Earing.  Currently it works great on Linux x86-64
-and probably on other Linux, but shoot me feedback.
-
-You need to have a recent version of Python 2.5 installed:
-
-1. Grab the tarball from the website: http://zedshaw.com/projects/earing
-1. python software/ez_setup.py  (only do this if you don't have easy_install already)
-2. easy_install zapps pygments idiopidae vellum
-4. tar -xjvf earing-VERSION.tar.bz2
-5. cd earing-VERSION
-6. vellum software-64  (on non-64bit do: vellum software-others)
-7. vellum build (OSX do: build-OSX)
-9. build/earing samples/linux-64.asm (build/earing samples/osx-32.asm on OSX)
-10. build/earing -h
-11. build/earing -i samples/linux-64.asm
-
-Have fun.  The big sample script is in samples/simpler.asm and has tons of
-simple little functions showing off the features.
-
-If you don't have Python you can still install it, but you'll have to figure it
-out yourself.  Look at build.vel and software/build.vel for the automation.
+Don't bother, it's bitrot by now so you'd have to work on it.
 
 There's a bug in how double/float types are handled on 32-bit vs. 64-bit.  Still
 have to track it down, but you can't use float on 64-bit, and can't use double
@@ -111,18 +119,9 @@ OSX so I removed it until I can learn more about it.
 
 
 CONTRIBUTING
+============
 
-I have to work on a book for the next month or so, which means I won't be doing
-too much with this project until then.  If you're interested in working on it,
-here's what I suggest:
-
-1. I have the Bazaar repository at http://zedshaw.com/repository/earing
-2. Make a branch and start your hacking.
-3. As you have interesting patches or bug fixes, email them to me at
-    zedshaw@zedshaw.com or tell me where your branch is online.
-4. I'll periodically do releases that include other people's stuff.
-
-If people start contributing then I'll pick an open source license.  Otherwise,
-enjoy the hack and the joke.
+If you do pull requests I'll include them, otherwise, this is just a historical
+record.
 
 
