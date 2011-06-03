@@ -6,7 +6,7 @@
 Token *Allocator_expression(Module *state, Token *tk)
 {
     if(!tk) {
-        die(state, "invalid identifier given to allocation");
+        die(state, ":- invalid identifier given to allocation");
         return NULL;
     } else {
         tk->value = (int)GC_MALLOC(tk->value);
